@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="CSS/estilo.css" />
+    <title>Métodos HTTP</title>
+  </head>
+  <body>
+    <header>
+      <a href="index.html" style="color: white; text-decoration: none"
+        ><h1>Consumo de APIs con JavaScript</h1></a
+      >
+      <p>Exposición Tema 3 | ISW-512 | Universidad Técnica Nacional</p>
+    </header>
+
+    <nav>
+      <a href="api.html">¿Qué es una API?</a>
+      <a href="#metodos">Métodos HTTP</a>
+      <a href="json.html">JSON y XML</a>
+      <a href="ajax.html">AJAX</a>
+      <a href="consumo.html">Consumo API REST</a>
+    </nav>
+    <main>
+      <section id="metodos">
+        <h2>Métodos HTTP</h2>
+        <ul>
+          <li><strong>GET:</strong> Obtener datos</li>
+          <li><strong>POST:</strong> Crear datos nuevos</li>
+          <li><strong>PUT:</strong> Actualizar completamente un recurso</li>
+          <li><strong>PATCH:</strong> Modificar parcialmente un recurso</li>
+          <li><strong>DELETE:</strong> Eliminar un recurso</li>
+        </ul>
+        <p><strong>Ejemplo GET:</strong></p>
+        <pre>
+GET /usuarios/5
+
+Respuesta:
+{
+  "id": 5,
+  "nombre": "Ana",
+  "edad": 30
+}</pre
+        >
+        <p><strong>Ejemplo POST:</strong></p>
+        <pre>
+POST /usuarios
+Enviado:
+{
+  "nombre": "Luis",
+  "edad": 25
+}
+Respuesta:
+{
+  "id": 6,
+  "nombre": "Luis",
+  "edad": 25
+}</pre
+        >
+        <p><strong>Ejemplo PUT:</strong></p>
+        <pre>
+PUT /usuarios/5
+Enviado:
+{
+  "nombre": "Ana María",
+  "edad": 31
+}
+Respuesta:
+{
+  "id": 5,
+  "nombre": "Ana María",
+  "edad": 31
+}</pre
+        >
+        <p><strong>Ejemplo PATCH:</strong></p>
+        <pre>
+PATCH /usuarios/5
+Enviado:
+{
+  "edad": 32
+}
+Respuesta:
+{
+  "id": 5,
+  "nombre": "Ana María",
+  "edad": 32
+}</pre
+        >
+        <p><strong>Ejemplo DELETE:</strong></p>
+        <pre>
+DELETE /usuarios/5
+Respuesta:
+{
+  "mensaje": "Usuario eliminado con éxito"
+}</pre
+        >
+        <p><strong>Códigos de respuesta comunes:</strong></p>
+        <ul>
+          <li>200 OK, 201 Created</li>
+          <li>400 Bad Request</li>
+          <li>401 Unauthorized</li>
+          <li>404 Not Found</li>
+          <li>Internal Server Error</li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>
+        Dereck Jara Núñez | Emmanuel Alpizar Arguedas | Prof. Nathalie Paniagua
+        López
+      </p>
+    </footer>
+  </body>
+</html>

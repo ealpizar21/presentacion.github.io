@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="CSS/estilo.css" />
+    <title>AJAX</title>
+  </head>
+  <body>
+    <header>
+      <a href="index.html" style="color: white; text-decoration: none"
+        ><h1>Consumo de APIs con JavaScript</h1></a
+      >
+      <p>Exposición Tema 3 | ISW-512 | Universidad Técnica Nacional</p>
+    </header>
+
+    <nav>
+      <a href="api.html">¿Qué es una API?</a>
+      <a href="Metodoshttp.html">Métodos HTTP</a>
+      <a href="json.html">JSON y XML</a>
+      <a href="#ajax">AJAX</a>
+      <a href="consumo.html">Consumo API REST</a>
+    </nav>
+    <main>
+      <section id="ajax">
+        <h2>AJAX</h2>
+        <p>
+          AJAX permite que una página web se comunique con el servidor sin
+          recargar. Usa JavaScript, el objeto XMLHttpRequest, y el DOM para
+          actualizar solo lo necesario.
+        </p>
+        <p><strong>Pasos:</strong></p>
+        <ol>
+          <li>Se genera un evento</li>
+          <li>JavaScript crea un XMLHttpRequest</li>
+          <li>Se envía la solicitud</li>
+          <li>Se recibe la respuesta</li>
+          <li>Se procesa y actualiza la vista</li>
+        </ol>
+        <pre>
+const xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://api.ejemplo.com/datos', true);
+xhr.onload = () => {
+  if (xhr.status === 200) console.log(JSON.parse(xhr.responseText));
+};
+xhr.send();</pre
+        >
+        <br>
+        <p>
+          <strong>Ventajas:</strong> mejora la velocidad, experiencia de usuario
+          e interactividad.
+        </p>
+        <p>
+          <strong>Desventajas:</strong> requiere JS activado, afecta el SEO,
+          puede ser complejo y vulnerable si no se controla.
+        </p>
+      </section>
+      <section>
+        <div class="video-container">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/z2aipCAq2n8?si=sIuFqg9khJs9X2KS"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>
+        Dereck Jara Núñez | Emmanuel Alpizar Arguedas | Prof. Nathalie Paniagua
+        López
+      </p>
+    </footer>
+  </body>
+</html>

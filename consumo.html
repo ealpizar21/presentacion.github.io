@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="CSS/estilo.css" />
+    <title>Consumo API REST</title>
+  </head>
+  <body>
+    <header>
+      <a href="index.html" style="color: white; text-decoration: none"
+        ><h1>Consumo de APIs con JavaScript</h1></a
+      >
+      <p>Exposición Tema 3 | ISW-512 | Universidad Técnica Nacional</p>
+    </header>
+
+    <nav>
+      <a href="api.html">¿Qué es una API?</a>
+      <a href="Metodoshttp.html">Métodos HTTP</a>
+      <a href="json.html">JSON y XML</a>
+      <a href="ajax.html">AJAX</a>
+      <a href="#consumo">Consumo API REST</a>
+    </nav>
+    <main>
+      <section id="consumo">
+        <h2>Consumo del API REST con JavaScript</h2>
+        <p><strong>XMLHttpRequest:</strong></p>
+        <pre>
+const xhr = new XMLHttpRequest();
+xhr.open('GET','https://api.ejemplo.com/items', true);
+xhr.onload = () => {
+  if (xhr.status === 200) console.log(JSON.parse(xhr.responseText));
+};
+xhr.send();</pre
+        >
+
+        <p><strong>Fetch API:</strong></p>
+        <pre>
+fetch('https://api.ejemplo.com/items')
+  .then(r => r.ok ? r.json() : Promise.reject(r.status))
+  .then(data => console.log(data))
+  .catch(e => console.error(e));</pre
+        >
+
+        <p><strong>jQuery AJAX:</strong></p>
+        <pre>
+$.getJSON('https://api.ejemplo.com/items')
+  .done(data => console.log(data))
+  .fail((_, s, e) => console.error(s, e));</pre
+        >
+      </section>
+    </main>
+    <footer>
+      <p>
+        Dereck Jara Núñez | Emmanuel Alpizar Arguedas | Prof. Nathalie Paniagua
+        López
+      </p>
+    </footer>
+  </body>
+</html>
