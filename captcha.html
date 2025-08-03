@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mapa + Google reCAPTCHA</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="CSS/estilo.css" />
+  <style>
+    #map {
+      height: 400px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .captcha-container {
+      margin-top: 20px;
+    }
+  </style>
+
+  <!-- Google reCAPTCHA API -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+     <header>
+      <h1>Consumo de APIs con JavaScript</h1>
+      <p>Exposición Tema 3 | ISW-512 | Universidad Técnica Nacional</p>
+    </header>
+
+    <nav>
+      <a href="api.html">¿Qué es una API?</a>
+      <a href="Metodoshttp.html">Métodos HTTP</a>
+      <a href="json.html">JSON y XML</a>
+      <a href="ajax.html">AJAX</a>
+      <a href="consumo.html">Consumo API REST</a>
+    </nav>
+
+  <h2>📍 Mapa con Leaflet</h2>
+  <div id="map"></div>
+
+  <h2>🔐 Captcha con API (Google reCAPTCHA)</h2>
+  <form onsubmit="return validarCaptcha()">
+    
+    <div class="g-recaptcha" data-sitekey="6LcjbZkrAAAAAGQvLpb1FBlMSUfIAozGsNlMJIUU"></div>
+    <br/>
+    <button type="submit">Enviar</button>
+    <p id="mensajeCaptcha"></p>
+  </form>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Mostrar el mapa
+    const map = L.map('map').setView([9.9281, -84.0907], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+    L.marker([9.9281, -84.0907]).addTo(map)
+      .bindPopup('San José, Costa Rica')
+      .openPopup();
+
+    // Validar que el usuario haya pasado el captcha
+    function validarCaptcha() {
+      const response = grecaptcha.getResponse();
+      const mensaje = document.getElementById('mensajeCaptcha');
+
+      if (response.length === 0) {
+        mensaje.textContent = "❌ Por favor completa el captcha.";
+        mensaje.style.color = "red";
+        return false; // no enviar el formulario
+      }
+
+      mensaje.textContent = "✔️ Captcha validado correctamente.";
+      mensaje.style.color = "green";
+      return false; // no enviar el formulario para evitar recarga de página
+    }
+  </script>
+ <footer>
+      <p>
+        Dereck Jara Núñez | Emmanuel Alpizar Arguedas | Prof. Nathalie Paniagua
+        López
+      </p>
+    </footer>
+</body>
+</html>
